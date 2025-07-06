@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  --background: 0 0% 100%;
+  /* White */
+  --foreground: 240 10% 3.9%;
+  /* #0A0A0A - Dark Charcoal (updated from 1A1A1A for better HSL representation) */
+
+  --card: 0 0% 100%;
+  /* White */
+  --card-foreground: 240 10% 3.9%;
+  /* Dark Charcoal */
+
+  --popover: 0 0% 100%;
+  /* White */
+  --popover-foreground: 240 10% 3.9%;
+  /* Dark Charcoal */
+
+  --primary: 258 89% 51%;
+  /* #6610F2 - Electric Indigo */
+  --primary-foreground: 0 0% 100%;
+  /* White */
+
+  --secondary: 220 13% 91%;
+  /* #E2E8F0 - Light Gray (new secondary, complements Indigo) */
+  --secondary-foreground: 240 10% 3.9%;
+  /* Dark Charcoal */
+
+  --muted: 220 9% 46.1%;
+  /* #6C757D - Gray for muted text */
+  --muted-foreground: 220 9% 46.1%;
+
+  --accent: 199 100% 50%;
+  /* #00C0FF - Sky Blue */
+  --accent-foreground: 240 10% 3.9%;
+  /* Dark Charcoal */
+
+  --destructive: 0 84.2% 60.2%;
+  /* Red */
+  --destructive-foreground: 0 0% 98%;
+  /* White */
+
+  --border: 220 13% 85%;
+  /* #D1D5DB - Slightly darker border */
+  --input: 220 13% 85%;
+  --ring: 258 89% 51%;
+  /* Electric Indigo for focus rings */
+
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+
+  /* Dark theme will use Electric Indigo as primary with dark backgrounds */
+  --background: 240 10% 3.9%;
+  /* Dark Charcoal */
+  --foreground: 0 0% 98%;
+  /* White */
+
+  --card: 240 4% 10%;
+  /* Darker card background */
+  --card-foreground: 0 0% 98%;
+  /* White */
+
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 258 89% 60%;
+  /* Brighter Electric Indigo for dark mode */
+  --primary-foreground: 240 10% 3.9%;
+  /* Dark Charcoal Text on Primary buttons */
+
+  --secondary: 240 4% 15%;
+  /* Even darker gray for secondary */
+  --secondary-foreground: 0 0% 98%;
+  /* White */
+
+  --muted: 240 4% 25%;
+  --muted-foreground: 240 5% 64.9%;
+
+  --accent: 199 100% 60%;
+  /* Brighter Sky Blue for dark mode */
+  --accent-foreground: 240 10% 3.9%;
+
+  --destructive: 0 72.2% 50.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 4% 15%;
+  --input: 240 4% 15%;
+  --ring: 258 89% 60%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Use new --background and --foreground */
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-foreground;
+    /* Ensure headings use the main foreground color */
+  }
+}
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--secondary) / 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.8);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary));
+}
