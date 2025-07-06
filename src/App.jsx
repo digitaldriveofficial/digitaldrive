@@ -24,7 +24,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx';
 import Login from './components/Login';
 import PublicPage from './components/PublicPage';
 import Layout from './components/Layout.jsx';
-
+import { AuthProvider } from './contexts/AuthContext';
 
 const App = () => {
   const [session, setSession] = useState(null);
@@ -135,6 +135,18 @@ const App = () => {
     return !isAuthenticated ? children : <Navigate to="/linkedin-connect" replace />;
   };
 
+  function AuthenticatedRoutes() {
+    return (
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin/*" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+          <Route path="/" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+        </Routes>
+      </AuthProvider>
+    );
+  }
+
   return (
     <ThemeProvider defaultTheme="light" storageKey="smartleads-ui-theme">
       <Router>
@@ -156,12 +168,14 @@ const App = () => {
               <Route path="/campaign-tracker/:campaignId" element={<AuthRedirect><CampaignTrackerPage /></AuthRedirect>} />
               <Route path="/campaign-tracker" element={<AuthRedirect><Navigate to="/campaign-setup" replace /></AuthRedirect>} />
 
-              {/* Admin routes */}
-              <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-              <Route path="/admin/*" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+
+
 
               {/* Public page route */}
               <Route path="/page/:pageId" element={<Layout><PublicPage /></Layout>} />
+              {/* Authenticated routes - with AuthContext */}
+              <Route path="/*" element={<AuthenticatedRoutes />} />
+
 
               <Route path="/blog" element={<BlogListPage />} />
               <Route path="/blog/:slug" element={<BlogPostPage />} />
