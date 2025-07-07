@@ -48,7 +48,7 @@ const DigitalDrivePage = () => {
         body: {
           ...formData,
           formType: 'Waiting List Signup', // Identify the form source
-          toEmail: 'hello@digitaldrive.pk', // Primary recipient
+          toEmail: 'subhanallauddin@gmail.com', // Primary recipient
           ccEmail: 'digitaldriveofficial@gmail.com' // CC recipient
         },
       });

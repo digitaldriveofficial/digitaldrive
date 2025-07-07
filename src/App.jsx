@@ -172,7 +172,7 @@ const App = () => {
 
 
               {/* Public page route */}
-              <Route path="/page/:pageId" element={<Layout><PublicPage /></Layout>} />
+              <Route path="/page/:pageId" element={<PublicPage />} />
               {/* Authenticated routes - with AuthContext */}
               <Route path="/*" element={<AuthenticatedRoutes />} />
 

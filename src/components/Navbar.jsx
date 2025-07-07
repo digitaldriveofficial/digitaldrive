@@ -38,7 +38,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
       navigate(`/#${sectionId}`);
     }
   };
-  
+
   const scrollToBlog = (e) => {
     e.preventDefault();
     scrollToSection('blog-section');
@@ -54,7 +54,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
     setIsMobileMenuOpen(false);
     navigate(path);
   };
-  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
@@ -80,105 +80,86 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
   const mobileButtonClasses = "w-full mt-3 py-3 px-4 text-lg";
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50 border-b-2 border-brand-electric-indigo/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <nav className="sticky top-0 z-50 bg-white border-b-2 shadow-lg border-brand-electric-indigo/30">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 flex items-center space-x-2 sm:space-x-3 group" onClick={() => setIsMobileMenuOpen(false)}>
-              <img src={DIGITAL_DRIVE_LOGO_URL} alt="Digital Drive Logo" className="h-10 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105" />
-              <span className="font-bold text-2xl sm:text-3xl text-brand-charcoal group-hover:text-brand-electric-indigo transition-colors duration-300">Digital Drive</span>
+            <Link to="/" className="flex flex-shrink-0 items-center group" onClick={() => setIsMobileMenuOpen(false)}>
+              <img src={DIGITAL_DRIVE_LOGO_URL} alt="Digital Drive Logo" className="w-auto h-36 transition-transform duration-300 group-hover:scale-105" />
             </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-3">
-            <Button variant="ghost" size="sm" onClick={scrollToBlog} className="text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo transition-colors duration-200">
-              <BookOpen className="w-4 h-4 mr-2" />
-              Blog
-            </Button>
-            
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="border-brand-electric-indigo text-brand-electric-indigo hover:bg-brand-electric-indigo hover:text-white transition-colors duration-200">
-                  <Zap className="w-4 h-4 mr-2" />
-                  Smart Leads
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56 mr-2 mt-1 border-brand-electric-indigo/30 shadow-lg rounded-md bg-white">
-                <DropdownMenuItem 
-                  onClick={scrollToContactForm} 
-                  className="cursor-pointer hover:!bg-brand-electric-indigo/10 focus:!bg-brand-electric-indigo/10 text-brand-charcoal px-3 py-2 flex items-center"
-                >
-                  <ListPlus className="mr-2 h-4 w-4 text-brand-sky-blue" />
-                  <span>Join Waiting List</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem 
-                  asChild 
-                  className="cursor-pointer hover:!bg-brand-electric-indigo/10 focus:!bg-brand-electric-indigo/10 text-brand-charcoal px-3 py-2 flex items-center"
-                >
-                  <Link to="/smart-leads">
-                    <Rocket className="mr-2 h-4 w-4 text-brand-sky-blue" />
-                    <span>Smart Leads Prototype</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-brand-charcoal hover:text-brand-electric-indigo transition-colors duration-200 p-2">
-              <Linkedin className="w-5 h-5" />
-              <span className="sr-only">LinkedIn</span>
-            </a>
-            {isAuthenticated ? (
-              <>
-                <Button variant="ghost" size="sm" asChild className="text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo transition-colors duration-200">
-                  <Link to="/optimizer">
-                    <LayoutDashboard className="w-4 h-4 mr-2" />
-                    Optimizer
-                  </Link>
-                </Button>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="rounded-full p-0 h-10 w-10 focus-visible:ring-2 focus-visible:ring-brand-electric-indigo focus-visible:ring-offset-2">
-                       <UserCircle className="h-8 w-8 text-brand-charcoal hover:text-brand-electric-indigo transition-colors" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-48 mr-2 mt-1 border-brand-electric-indigo/30 shadow-lg rounded-md" align="end">
-                    <DropdownMenuLabel className="font-normal text-brand-charcoal px-3 py-2">My Account</DropdownMenuLabel>
-                    <DropdownMenuSeparator className="bg-brand-electric-indigo/10"/>
-                    <DropdownMenuItem className="cursor-pointer hover:!bg-brand-electric-indigo/10 focus:!bg-brand-electric-indigo/10 text-brand-charcoal px-3 py-2">
-                      <Settings className="mr-2 h-4 w-4 text-brand-sky-blue" />
-                      <span>Settings</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator className="bg-brand-electric-indigo/10"/>
-                    <DropdownMenuItem onClick={handleLogoutClick} className="cursor-pointer text-red-600 hover:!bg-red-500/10 focus:!bg-red-500/10 focus:!text-red-700 px-3 py-2">
-                      <LogOut className="mr-2 h-4 w-4" />
-                      <span>Log out</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </>
-            ) : (
-              <>
-                <Button variant="ghost" asChild className="text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo transition-colors duration-200">
-                  <Link to="/auth?mode=login">Log In</Link>
-                </Button>
-                <Button asChild className="bg-brand-electric-indigo hover:bg-opacity-90 text-white transition-transform duration-200 hover:scale-105">
-                  <Link to="/auth?mode=signup">Sign Up</Link>
-                </Button>
-              </>
-            )}
+          <div className="hidden justify-between items-center w-full md:flex">
+            {/* Centered Nav Links */}
+            <div className="flex flex-1 justify-center space-x-6">
+              <Button variant="ghost" size="sm" onClick={scrollToBlog} className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                Blog
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                <Link to="/product">Product</Link>
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                <Link to="/team">Team</Link>
+              </Button>
+            </div>
+            {/* Right Side (auth/user, dropdown, etc.) */}
+            <div className="flex items-center space-x-3">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="p-2 transition-colors duration-200 text-brand-charcoal hover:text-brand-electric-indigo">
+                <Linkedin className="w-5 h-5" />
+                <span className="sr-only">LinkedIn</span>
+              </a>
+              {isAuthenticated ? (
+                <>
+                  <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                    <Link to="/optimizer">
+                      <LayoutDashboard className="mr-2 w-4 h-4" />
+                      Optimizer
+                    </Link>
+                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" className="p-0 w-10 h-10 rounded-full focus-visible:ring-2 focus-visible:ring-brand-electric-indigo focus-visible:ring-offset-2">
+                        <UserCircle className="w-8 h-8 transition-colors text-brand-charcoal hover:text-brand-electric-indigo" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="mt-1 mr-2 w-48 rounded-md shadow-lg border-brand-electric-indigo/30" align="end">
+                      <DropdownMenuLabel className="px-3 py-2 font-normal text-brand-charcoal">My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator className="bg-brand-electric-indigo/10" />
+                      <DropdownMenuItem className="cursor-pointer hover:!bg-brand-electric-indigo/10 focus:!bg-brand-electric-indigo/10 text-brand-charcoal px-3 py-2">
+                        <Settings className="mr-2 w-4 h-4 text-brand-sky-blue" />
+                        <span>Settings</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator className="bg-brand-electric-indigo/10" />
+                      <DropdownMenuItem onClick={handleLogoutClick} className="cursor-pointer text-red-600 hover:!bg-red-500/10 focus:!bg-red-500/10 focus:!text-red-700 px-3 py-2">
+                        <LogOut className="mr-2 w-4 h-4" />
+                        <span>Log out</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </>
+              ) : (
+                <>
+                  <Button variant="ghost" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                    <Link to="/auth?mode=login">Log In</Link>
+                  </Button>
+                  <Button asChild className="text-white transition-transform duration-200 bg-brand-electric-indigo hover:bg-opacity-90 hover:scale-105">
+                    <Link to="/auth?mode=signup">Sign Up</Link>
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-brand-charcoal hover:text-brand-electric-indigo hover:bg-brand-electric-indigo/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-electric-indigo"
+              className="inline-flex justify-center items-center p-2 rounded-md mobile-menu-button text-brand-charcoal hover:text-brand-electric-indigo hover:bg-brand-electric-indigo/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-brand-electric-indigo"
               aria-expanded={isMobileMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {isMobileMenuOpen ? <X className="block h-6 w-6" aria-hidden="true" /> : <Menu className="block h-6 w-6" aria-hidden="true" />}
+              {isMobileMenuOpen ? <X className="block w-6 h-6" aria-hidden="true" /> : <Menu className="block w-6 h-6" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -193,38 +174,38 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-20 left-0 right-0 bg-white shadow-xl z-40 border-t border-brand-electric-indigo/20"
+            className="absolute right-0 left-0 top-20 z-40 bg-white border-t shadow-xl md:hidden border-brand-electric-indigo/20"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <button onClick={scrollToBlog} className={mobileNavLinkClasses}>
-                <BookOpen className="w-5 h-5 mr-3 inline-block" />Blog
+                Blog
               </button>
-              
+
               <button onClick={scrollToContactForm} className={mobileNavLinkClasses}>
-                <ListPlus className="w-5 h-5 mr-3 inline-block text-brand-sky-blue" />Join Waiting List
+                <ListPlus className="inline-block mr-3 w-5 h-5 text-brand-sky-blue" />Join Waiting List
               </button>
               <Button variant="outline" asChild className={`${mobileNavLinkClasses} border-brand-electric-indigo text-brand-electric-indigo hover:bg-brand-electric-indigo hover:text-white`}>
                 <Link to="/smart-leads" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Rocket className="w-5 h-5 mr-3 inline-block" />Smart Leads Prototype
+                  <Rocket className="inline-block mr-3 w-5 h-5" />Smart Leads Prototype
                 </Link>
               </Button>
 
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={`${mobileNavLinkClasses} flex items-center`}>
-                <Linkedin className="w-5 h-5 mr-3 inline-block" />LinkedIn
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className={`flex items-center ${mobileNavLinkClasses}`}>
+                <Linkedin className="inline-block mr-3 w-5 h-5" />LinkedIn
               </a>
 
               {isAuthenticated ? (
                 <>
                   <Button variant="ghost" asChild className={mobileNavLinkClasses}>
                     <Link to="/optimizer" onClick={() => setIsMobileMenuOpen(false)}>
-                      <LayoutDashboard className="w-5 h-5 mr-3 inline-block" />Optimizer
+                      <LayoutDashboard className="inline-block mr-3 w-5 h-5" />Optimizer
                     </Link>
                   </Button>
                   <button onClick={() => { setIsMobileMenuOpen(false); navigate('/'); }} className={mobileNavLinkClasses}>
-                    <Settings className="w-5 h-5 mr-3 inline-block text-brand-sky-blue" />Settings
+                    <Settings className="inline-block mr-3 w-5 h-5 text-brand-sky-blue" />Settings
                   </button>
                   <button onClick={handleLogoutClick} className={`${mobileNavLinkClasses} text-red-600 hover:!bg-red-500/10 focus:!bg-red-500/10 focus:!text-red-700`}>
-                    <LogOut className="w-5 h-5 mr-3 inline-block" />Log out
+                    <LogOut className="inline-block mr-3 w-5 h-5" />Log out
                   </button>
                 </>
               ) : (
@@ -232,7 +213,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                   <Button variant="ghost" asChild className={mobileNavLinkClasses}>
                     <Link to="/auth?mode=login" onClick={() => setIsMobileMenuOpen(false)}>Log In</Link>
                   </Button>
-                  <Button asChild className={`${mobileButtonClasses} bg-brand-electric-indigo hover:bg-opacity-90 text-white`}>
+                  <Button asChild className={`text-white ${mobileButtonClasses} bg-brand-electric-indigo hover:bg-opacity-90`}>
                     <Link to="/auth?mode=signup" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
                   </Button>
                 </>

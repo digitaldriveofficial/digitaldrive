@@ -181,9 +181,9 @@ export default function Admin() {
 
   if (previewPageId && pageToPreview) {
     return (
-      <Layout noHeader>
-        <PagePreview page={pageToPreview} onBackToAdmin={handleBackToAdmin} />
-      </Layout>
+
+      <PagePreview page={pageToPreview} onBackToAdmin={handleBackToAdmin} />
+
     );
   }
 
@@ -192,7 +192,8 @@ export default function Admin() {
   }
 
   return (
-    <Layout noHeader>
+    // <Layout noHeader noFooter>
+    <>
       <Helmet>
         <title>Digital Drive - Admin</title>
         <meta
@@ -210,6 +211,7 @@ export default function Admin() {
         onUpdateTile={updateTile}
         onDeleteTile={deleteTile}
       />
-    </Layout>
+    </>
+    // </Layout>
   );
 }
