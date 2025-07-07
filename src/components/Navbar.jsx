@@ -141,10 +141,10 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
               ) : (
                 <>
                   <Button variant="ghost" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
-                    <Link to="/auth?mode=login">Log In</Link>
+                    <Link to="https://linkedin-smartleads.com/auth?mode=login" target='_blank'>Log In</Link>
                   </Button>
                   <Button asChild className="text-white transition-transform duration-200 bg-brand-electric-indigo hover:bg-opacity-90 hover:scale-105">
-                    <Link to="/auth?mode=signup">Sign Up</Link>
+                    <Link to="https://linkedin-smartleads.com/auth?mode=signup" target='_blank'>Sign Up</Link>
                   </Button>
                 </>
               )}
