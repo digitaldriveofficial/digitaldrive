@@ -38,14 +38,14 @@ const CampaignTrackerPage = () => {
         .select('*')
         .eq('campaign_id', campaignId)
         .order('created_at', { ascending: false });
-
+      
       if (leadsError) throw leadsError;
       setLeads(leadsData || []);
 
     } catch (error) {
       console.error('Error fetching campaign data:', error);
       toast({ title: 'Error', description: `Failed to fetch campaign details: ${error.message}`, variant: 'destructive' });
-      navigate('/linkedin-connect');
+      navigate('/linkedin-connect'); 
     } finally {
       setIsLoading(false);
     }
@@ -65,12 +65,12 @@ const CampaignTrackerPage = () => {
         { event: '*', schema: 'public', table: 'campaign_leads', filter: `campaign_id=eq.${campaignId}` },
         (payload) => {
           console.log('Realtime lead update:', payload);
-          fetchCampaignDetails();
+          fetchCampaignDetails(); 
           toast({ title: 'Lead Updated', description: `Lead ${payload.new?.profile_name || payload.old?.profile_name} status changed.`, variant: 'default' });
         }
       )
       .subscribe();
-
+    
     const campaignSubscription = supabase
       .channel(`campaign_status_changes_for_${campaignId}`)
       .on(
@@ -110,13 +110,13 @@ const CampaignTrackerPage = () => {
       setIsUpdatingStatus(false);
     }
   };
-
+  
   const handleExportCSV = () => {
     if (leads.length === 0) {
       toast({ title: 'No Data', description: 'No leads to export.', variant: 'default' });
       return;
     }
-
+    
     const headers = ['Profile Name', 'Profile URL', 'Connection Sent At', 'Connection Accepted At', 'Message Sent At', 'Post Liked At', 'Status', 'Error Message'];
     const rows = leads.map(lead => [
       `"${(lead.profile_name || 'N/A').replace(/"/g, '""')}"`,
@@ -168,7 +168,7 @@ const CampaignTrackerPage = () => {
       default: return 'text-muted-foreground';
     }
   };
-
+  
   const getLeadStatusPill = (status) => {
     let bgColor = 'bg-gray-100 dark:bg-gray-700';
     let textColor = 'text-gray-800 dark:text-gray-200';
@@ -202,10 +202,10 @@ const CampaignTrackerPage = () => {
                 <Button variant="outline" size="sm" onClick={fetchCampaignDetails} disabled={isLoading}>
                   <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} /> Refresh
                 </Button>
-                <Button
-                  variant={campaign.status === 'active' ? "destructive" : "default"}
-                  size="sm"
-                  onClick={handleToggleCampaignStatus}
+                <Button 
+                  variant={campaign.status === 'active' ? "destructive" : "default"} 
+                  size="sm" 
+                  onClick={handleToggleCampaignStatus} 
                   disabled={isUpdatingStatus}
                   className={`${campaign.status === 'active' ? 'bg-orange-500 hover:bg-orange-600' : 'bg-green-500 hover:bg-green-600'} text-white`}
                 >
@@ -247,7 +247,7 @@ const CampaignTrackerPage = () => {
                   <TableBody>
                     <AnimatePresence>
                       {leads.map((lead) => (
-                        <motion.tr
+                        <motion.tr 
                           key={lead.id}
                           layout
                           initial={{ opacity: 0 }}

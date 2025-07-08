@@ -178,7 +178,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <button onClick={scrollToBlog} className={mobileNavLinkClasses}>
-                Blog
+                <BookOpen className="inline-block mr-3 w-5 h-5" />Blog
               </button>
 
               <button onClick={scrollToContactForm} className={mobileNavLinkClasses}>

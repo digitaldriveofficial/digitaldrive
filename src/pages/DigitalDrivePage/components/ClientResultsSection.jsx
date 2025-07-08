@@ -36,7 +36,7 @@ const ClientResultsSection = ({ clientResults = defaultClientResults }) => {
     <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
-          <motion.h2
+          <motion.h2 
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -47,7 +47,7 @@ const ClientResultsSection = ({ clientResults = defaultClientResults }) => {
               Real Results
             </span> for Real Clients
           </motion.h2>
-          <motion.p
+          <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -57,7 +57,7 @@ const ClientResultsSection = ({ clientResults = defaultClientResults }) => {
             Don't just take our word for it. See what our clients are saying.
           </motion.p>
         </div>
-
+        
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {(clientResults && clientResults.length > 0 ? clientResults : defaultClientResults).map((client, index) => (
             <motion.div
@@ -74,8 +74,8 @@ const ClientResultsSection = ({ clientResults = defaultClientResults }) => {
                   <CardTitle className="text-2xl sm:text-3xl text-primary group-hover:text-primary/90 transition-colors mt-2">
                     {client.name || 'Valued Client'}
                   </CardTitle>
-                  <img
-                    alt={client.logoAlt}
+                   <img  
+                    alt={client.logoAlt} 
                     className="h-8 sm:h-10 w-auto my-3 filter grayscale group-hover:filter-none transition-all duration-300 object-contain"
                     src={client.logoUrl} />
                 </CardHeader>

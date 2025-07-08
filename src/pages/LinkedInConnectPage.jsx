@@ -32,22 +32,22 @@ const LinkedInConnectPage = () => {
         toast({ title: 'Error', description: 'LinkedIn session cookie cannot be empty.', variant: 'destructive' });
         validationError = true;
       }
-      connectionDataFields = {
-        session_cookie_encrypted: sessionCookie,
+      connectionDataFields = { 
+        session_cookie_encrypted: sessionCookie, 
         linkedin_email_encrypted: null,
         linkedin_password_encrypted: null,
-        connection_method: 'cookie'
+        connection_method: 'cookie' 
       };
     } else { // credentials
       if (!linkedinEmail.trim() || !linkedinPassword.trim()) {
         toast({ title: 'Error', description: 'LinkedIn email and password cannot be empty.', variant: 'destructive' });
         validationError = true;
       }
-      connectionDataFields = {
-        linkedin_email_encrypted: linkedinEmail,
-        linkedin_password_encrypted: linkedinPassword,
+      connectionDataFields = { 
+        linkedin_email_encrypted: linkedinEmail, 
+        linkedin_password_encrypted: linkedinPassword, 
         session_cookie_encrypted: null,
-        connection_method: 'credentials'
+        connection_method: 'credentials' 
       };
     }
 
@@ -65,8 +65,8 @@ const LinkedInConnectPage = () => {
         return;
       }
 
-      const updatePayload = {
-        user_id: user.id,
+      const updatePayload = { 
+        user_id: user.id, 
         ...connectionDataFields
       };
 
@@ -155,7 +155,7 @@ const LinkedInConnectPage = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded-md">
+                   <div className="bg-red-50 border-l-4 border-red-400 p-3 rounded-md">
                     <div className="flex">
                       <div className="flex-shrink-0 pt-0.5">
                         <AlertTriangle className="h-5 w-5 text-red-500" aria-hidden="true" />
@@ -185,7 +185,7 @@ const LinkedInConnectPage = () => {
                       />
                     </div>
                     <p className="text-xs text-muted-foreground pt-1">
-                      Need help finding your cookie? <a href="#" onClick={(e) => { e.preventDefault(); toast({ title: 'Info', description: "Instructions on finding your LinkedIn session cookie will be provided here. For now, search online for 'how to find LinkedIn li_at cookie'." }); }} className="text-primary hover:underline">Learn more</a>.
+                      Need help finding your cookie? <a href="#" onClick={(e) => { e.preventDefault(); toast({ title: 'Info', description: "Instructions on finding your LinkedIn session cookie will be provided here. For now, search online for 'how to find LinkedIn li_at cookie'."}); }} className="text-primary hover:underline">Learn more</a>.
                     </p>
                   </div>
                   <div className="bg-blue-50 border-l-4 border-blue-400 p-3 rounded-md">
@@ -201,7 +201,7 @@ const LinkedInConnectPage = () => {
                     </div>
                   </div>
                 </TabsContent>
-
+                
                 <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-md mt-6">
                   <div className="flex">
                     <div className="flex-shrink-0">

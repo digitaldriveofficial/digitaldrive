@@ -74,7 +74,7 @@ const AuthPage = () => {
         await sendSignupNotification(email, "Email");
 
         if (data.user && data.user.identities && data.user.identities.length === 0) {
-          toast({
+           toast({
             title: "Signup successful! User already exists.",
             description: "Please log in with your existing account.",
             variant: "default",
@@ -209,8 +209,8 @@ const AuthPage = () => {
                 {mode === 'signup' && (
                   <div className="space-y-2">
                     <Label htmlFor="confirmPassword" className="text-brand-charcoal">Confirm Password</Label>
-                    <div className="relative">
-                      <Input
+                     <div className="relative">
+                        <Input
                         id="confirmPassword"
                         type={showConfirmPassword ? 'text' : 'password'}
                         placeholder="••••••••"
@@ -218,15 +218,15 @@ const AuthPage = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                         className="pr-10 border-brand-charcoal/30 focus:border-brand-electric-indigo"
-                      />
-                      <button
+                        />
+                        <button
                         type="button"
                         onClick={toggleConfirmPasswordVisibility}
                         className="absolute inset-y-0 right-0 px-3 flex items-center text-muted-foreground hover:text-brand-electric-indigo"
                         aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
-                      >
+                        >
                         {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                      </button>
+                        </button>
                     </div>
                   </div>
                 )}
@@ -241,7 +241,7 @@ const AuthPage = () => {
                   {isLoading ? 'Processing...' : (mode === 'login' ? 'Log In' : 'Sign Up with Email')}
                 </Button>
               </form>
-
+              
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
                   <span className="w-full border-t border-brand-charcoal/30" />
@@ -251,9 +251,9 @@ const AuthPage = () => {
                 </div>
               </div>
 
-              <Button
-                variant="outline"
-                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 font-semibold py-3 text-lg group"
+              <Button 
+                variant="outline" 
+                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 font-semibold py-3 text-lg group" 
                 onClick={handleLinkedInAuth}
                 disabled={isLoading || isLinkedInLoading}
               >
@@ -282,16 +282,16 @@ const AuthPage = () => {
                   {mode === 'login' ? 'Sign Up' : 'Log In'}
                 </Button>
               </p>
-              {mode === 'login' && (
-                <Button variant="link" size="sm" className="text-muted-foreground hover:text-brand-electric-indigo text-xs" disabled={isLoading || isLinkedInLoading}>
-                  Forgot password?
-                </Button>
-              )}
+               {mode === 'login' && (
+                 <Button variant="link" size="sm" className="text-muted-foreground hover:text-brand-electric-indigo text-xs" disabled={isLoading || isLinkedInLoading}>
+                    Forgot password?
+                 </Button>
+               )}
             </CardFooter>
           </Card>
         </motion.div>
       </AnimatePresence>
-      <p className="text-xs text-muted-foreground text-center mt-8 max-w-md">
+       <p className="text-xs text-muted-foreground text-center mt-8 max-w-md">
         By signing up or logging in, you agree to our <Link to="/privacy-policy" className="underline hover:text-brand-electric-indigo">Privacy Policy</Link> and Terms of Service (link to be added).
       </p>
     </div>

@@ -112,7 +112,7 @@ const CampaignSetupPage = () => {
                   id="connectionLimit"
                   type="number"
                   min="1"
-                  max="100"
+                  max="100" 
                   value={connectionLimit}
                   onChange={(e) => setConnectionLimit(parseInt(e.target.value, 10))}
                   required
@@ -124,22 +124,22 @@ const CampaignSetupPage = () => {
                 <Label className="font-semibold">Actions per Profile</Label>
                 <div className="flex items-center space-x-3">
                   <Checkbox id="followProfile" checked={followProfile} onCheckedChange={setFollowProfile} />
-                  <Label htmlFor="followProfile" className="flex items-center text-sm"><UserCheck className="w-4 h-4 mr-2 text-primary" />Follow the profile</Label>
+                  <Label htmlFor="followProfile" className="flex items-center text-sm"><UserCheck className="w-4 h-4 mr-2 text-primary"/>Follow the profile</Label>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Checkbox id="openNotifications" checked={openNotifications} onCheckedChange={setOpenNotifications} />
-                  <Label htmlFor="openNotifications" className="flex items-center text-sm"><Bell className="w-4 h-4 mr-2 text-primary" />Open profile notifications</Label>
+                  <Label htmlFor="openNotifications" className="flex items-center text-sm"><Bell className="w-4 h-4 mr-2 text-primary"/>Open profile notifications</Label>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Checkbox id="likeLatestPost" checked={likeLatestPost} onCheckedChange={setLikeLatestPost} />
-                  <Label htmlFor="likeLatestPost" className="flex items-center text-sm"><ThumbsUp className="w-4 h-4 mr-2 text-primary" />Like the latest post</Label>
+                  <Label htmlFor="likeLatestPost" className="flex items-center text-sm"><ThumbsUp className="w-4 h-4 mr-2 text-primary"/>Like the latest post</Label>
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="messageContext" className="font-semibold">
                   Message Context (Optional)
-                  <MessageSquare className="inline w-4 h-4 ml-2 text-primary" />
+                  <MessageSquare className="inline w-4 h-4 ml-2 text-primary"/>
                 </Label>
                 <Textarea
                   id="messageContext"
@@ -149,11 +149,11 @@ const CampaignSetupPage = () => {
                   rows={4}
                   className="text-base focus:border-primary"
                 />
-                <p className="text-xs text-muted-foreground pt-1">
+                 <p className="text-xs text-muted-foreground pt-1">
                   This message will be sent after a connection request is accepted.
                 </p>
               </div>
-
+              
               <Button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-lg py-3 group" disabled={isLoading}>
                 {isLoading ? (
                   <motion.div
@@ -165,7 +165,7 @@ const CampaignSetupPage = () => {
                   <Play className="w-5 h-5 mr-2" />
                 )}
                 {isLoading ? 'Saving Campaign...' : 'Begin Outreach'}
-                {!isLoading && <ArrowRight className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" />}
+                 {!isLoading && <ArrowRight className="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1" />}
               </Button>
             </form>
           </CardContent>

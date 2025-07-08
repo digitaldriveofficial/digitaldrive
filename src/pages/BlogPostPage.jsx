@@ -14,16 +14,16 @@ const BlogPostPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       setLoading(true);
-      setError(null);
+      setError(null); 
       try {
         const { data, error: dbError } = await supabase
           .from('blog_posts')
           .select('*')
-          .eq('slug', slug)
+          .eq('slug', slug) 
           .single();
 
         if (dbError) {
-          if (dbError.code === 'PGRST116') {
+          if (dbError.code === 'PGRST116') { 
             setError(`Post with slug "${slug}" not found.`);
             setPost(null);
           } else {
@@ -126,7 +126,7 @@ const BlogPostPage = () => {
           </div>
         )}
 
-        <div
+        <div 
           className="prose prose-lg sm:prose-xl max-w-none text-brand-charcoal/90 
                      prose-headings:text-brand-charcoal prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl
                      prose-a:text-brand-electric-indigo hover:prose-a:text-brand-sky-blue prose-a:transition-colors
@@ -134,7 +134,7 @@ const BlogPostPage = () => {
                      prose-blockquote:border-l-brand-electric-indigo prose-blockquote:text-brand-charcoal/80
                      prose-code:bg-gray-100 prose-code:p-1 prose-code:rounded prose-code:font-mono prose-code:text-sm
                      prose-ul:list-disc prose-ol:list-decimal prose-li:my-1"
-          dangerouslySetInnerHTML={{ __html: post.content ? post.content.replace(/\n/g, '<br />') : '' }}
+          dangerouslySetInnerHTML={{ __html: post.content ? post.content.replace(/\n/g, '<br />') : '' }} 
         />
       </motion.article>
     </div>

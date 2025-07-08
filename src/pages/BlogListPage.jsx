@@ -105,7 +105,7 @@ const BlogListPage = () => {
                 <CardHeader className="pb-3">
                   {post.category && (
                     <span className="inline-flex items-center text-xs text-brand-electric-indigo font-semibold uppercase tracking-wider mb-1">
-                      <Tag className="w-3.5 h-3.5 mr-1.5" />
+                      <Tag className="w-3.5 h-3.5 mr-1.5"/>
                       {post.category}
                     </span>
                   )}

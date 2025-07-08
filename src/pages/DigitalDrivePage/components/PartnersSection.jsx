@@ -5,59 +5,70 @@ const defaultPartners = [
   {
     name: "LinkedIn",
     alt: "LinkedIn Logo",
-    logoUrl: "https://storage.googleapis.com/hostinger-assets/logos/linkedin.svg"
+    logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/0da841fe66ed1bce381b05e2c70d620f.png"
   },
   {
-    name: "Dripify",
-    alt: "Dripify Logo",
-    logoUrl: "https://storage.googleapis.com/hostinger-assets/logos/dripify.svg"
+    name: "Canva",
+    alt: "Canva Logo",
+    logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/c3339fea5ba840c8b713a9e98ffa249e.png"
   },
   {
     name: "ChatGPT",
     alt: "ChatGPT Logo",
-    logoUrl: "https://storage.googleapis.com/hostinger-assets/logos/chatgpt.svg"
+    logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/160436dec54371df59de53a240afd465.png"
   },
   {
-    name: "Seamless.ai",
-    alt: "Seamless.ai Logo",
-    logoUrl: "https://storage.googleapis.com/hostinger-assets/logos/seamless-ai.svg"
-  },
-  {
-    name: "Calendly",
-    alt: "Calendly Logo",
-    logoUrl: "https://storage.googleapis.com/hostinger-assets/logos/calendly.svg"
+    name: "Dripify",
+    alt: "Dripify Logo",
+    logoUrl: "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/5b9171da295ce90dd9700f1e8df6c314.png"
   }
 ];
 
-const defaultSmartLeadsLogoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/abd3c822790a68c1006d3fe6134c627d.png";
+const defaultSmartLeadsLogoUrl = "https://storage.googleapis.com/hostinger-horizons-assets-prod/67722c01-0a4e-486e-bb90-fd82298bf8f9/45274117d90b9c113aa2c4a4258d5232.png";
 
 const PartnersSection = ({ partners = defaultPartners, smartLeadsLogoUrl = defaultSmartLeadsLogoUrl }) => {
-  const duplicatedPartners = [...partners, ...partners, ...partners, ...partners];
   const smartLeadsPartner = { name: "Smart Leads", alt: "Smart Leads Logo", logoUrl: smartLeadsLogoUrl, isSmartLeads: true };
   
-  const firstSetPartners = [...partners.slice(0, Math.floor(partners.length / 2)), smartLeadsPartner, ...partners.slice(Math.floor(partners.length / 2))];
-  const allLogos = [...firstSetPartners, ...firstSetPartners, ...firstSetPartners, ...firstSetPartners];
+  const middleIndex = Math.ceil(partners.length / 2);
+  const firstHalf = partners.slice(0, middleIndex);
+  const secondHalf = partners.slice(middleIndex);
+
+  const arrangedPartners = [...firstHalf, smartLeadsPartner, ...secondHalf];
+  const duplicatedLogos = [...arrangedPartners, ...arrangedPartners, ...arrangedPartners];
 
   const carouselRef = useRef(null);
-  const [animationDuration, setAnimationDuration] = useState(60);
+  const [animationDuration, setAnimationDuration] = useState(40);
 
   useEffect(() => {
     if (carouselRef.current) {
-      const containerWidth = carouselRef.current.offsetWidth;
-      const contentWidth = carouselRef.current.scrollWidth / 4;
-      const calculatedDuration = Math.max(30, contentWidth / 15);
+      const contentWidth = carouselRef.current.scrollWidth / 3;
+      const calculatedDuration = Math.max(20, contentWidth / 25);
       setAnimationDuration(calculatedDuration);
     }
   }, [partners, smartLeadsLogoUrl]);
 
   return (
-    <section className="py-16 bg-white overflow-hidden">
+    <section className="py-16 bg-white dark:bg-slate-900 overflow-hidden">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold text-brand-charcoal mb-4">Our Technology Partners</h2>
-        <p className="text-muted-foreground mb-12 max-w-xl mx-auto">
+        <motion.h2 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl sm:text-4xl font-bold text-brand-charcoal dark:text-white mb-4"
+        >
+          Our Technology Partners
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="text-muted-foreground dark:text-slate-300 mb-12 max-w-xl mx-auto"
+        >
           We integrate with the best tools to deliver exceptional results for your business.
-        </p>
-        <div className="relative w-full overflow-hidden group">
+        </motion.p>
+        <div className="relative w-full overflow-hidden group mask-gradient">
           <motion.div
             ref={carouselRef}
             className="flex items-center"
@@ -68,23 +79,28 @@ const PartnersSection = ({ partners = defaultPartners, smartLeadsLogoUrl = defau
               repeat: Infinity,
               repeatType: 'loop',
             }}
-            style={{ width: `${allLogos.length * 100 / (partners.length + 1)}%` }}
           >
-            {allLogos.map((partner, index) => (
+            {duplicatedLogos.map((partner, index) => (
               <div 
                 key={`${partner.name}-${index}`} 
-                className="flex-shrink-0 w-auto px-6 md:px-10 flex justify-center items-center"
-                style={{ minWidth: partner.isSmartLeads ? '180px' : '120px' }}
+                className={`flex-shrink-0 px-8 md:px-12 flex justify-center items-center h-28 transition-transform duration-300 ease-in-out`}
+                style={{ minWidth: partner.isSmartLeads ? '180px' : '160px' }}
               >
                 <img  
                   alt={partner.alt} 
+                  src={partner.logoUrl}
                   className={`
-                    ${partner.isSmartLeads ? 'h-16 md:h-24 rounded-md shadow-lg border-2 border-brand-electric-indigo' : 'h-10 md:h-12 grayscale group-hover:grayscale-0 transition-all duration-300'}
+                    object-contain
+                    ${partner.isSmartLeads 
+                      ? 'h-14 md:h-16 drop-shadow-lg' 
+                      : 'h-10 md:h-12 transition-all duration-300'
+                    }
                   `}
-                 src="https://images.unsplash.com/photo-1592181572975-1d0d8880d175" />
+                />
               </div>
             ))}
           </motion.div>
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white via-transparent to-white dark:from-slate-900 dark:via-transparent dark:to-slate-900"></div>
         </div>
       </div>
     </section>
