@@ -41,24 +41,24 @@ const defaultBlogPosts = [
 const BlogSection = ({ blogPosts = defaultBlogPosts }) => {
   return (
     <section id="blog-section" className="py-16 md:py-24 bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container px-4 mx-auto sm:px-6 lg:px-8">
         <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12 md:mb-16"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-12 text-center md:mb-16"
         >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground">
-                Latest Insights & News
-            </h2>
-            <p className="mt-4 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Stay updated with the latest trends in AI, marketing automation, and lead generation from our experts.
-            </p>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl text-foreground">
+            Latest Insights & News
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg sm:text-xl text-muted-foreground">
+            Stay updated with the latest trends in AI, marketing automation, and lead generation from our experts.
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => ( 
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {blogPosts.map((post, index) => (
             <motion.div
               key={post.id}
               initial={{ opacity: 0, y: 50 }}
@@ -67,21 +67,21 @@ const BlogSection = ({ blogPosts = defaultBlogPosts }) => {
               transition={{ duration: 0.5, delay: index * 0.1, type: 'spring', stiffness: 100 }}
               className="h-full"
             >
-              <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-primary/20 dark:hover:shadow-primary/20 transition-all duration-300 rounded-xl group border-transparent hover:border-primary/30 bg-card">
-                <div className="h-52 w-full bg-gray-200 dark:bg-slate-800 overflow-hidden rounded-t-xl">
-                  <img 
-                    alt={post.title} 
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              <Card className="flex overflow-hidden flex-col h-full rounded-xl border-transparent shadow-lg transition-all duration-300 hover:shadow-primary/20 dark:hover:shadow-primary/20 group hover:border-primary/30 bg-card">
+                <div className="overflow-hidden w-full h-52 bg-gray-200 rounded-t-xl dark:bg-slate-800">
+                  <img
+                    alt={post.title}
+                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                     src={post.imageUrl || "https://images.unsplash.com/photo-1606498679340-0aec3185edbd"} />
                 </div>
                 <CardHeader className="pb-3">
-                   {post.category && (
-                    <span className="inline-flex items-center text-xs text-primary font-semibold uppercase tracking-wider mb-1">
-                      <Tag className="w-3.5 h-3.5 mr-1.5"/>
+                  {post.category && (
+                    <span className="inline-flex items-center mb-1 text-xs font-semibold tracking-wider uppercase text-primary">
+                      <Tag className="w-3.5 h-3.5 mr-1.5" />
                       {post.category}
                     </span>
                   )}
-                  <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colors mt-1 line-clamp-2">
+                  <CardTitle className="mt-1 text-xl transition-colors text-foreground group-hover:text-primary line-clamp-2">
                     {post.externalLink ? (
                       <a href={post.externalLink} target="_blank" rel="noopener noreferrer">{post.title}</a>
                     ) : (
@@ -89,17 +89,17 @@ const BlogSection = ({ blogPosts = defaultBlogPosts }) => {
                     )}
                   </CardTitle>
                   <CardDescription className="text-xs text-muted-foreground flex items-center mt-1.5">
-                    <CalendarDays className="w-3.5 h-3.5 mr-1.5" /> 
+                    <CalendarDays className="w-3.5 h-3.5 mr-1.5" />
                     {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow pt-0">
                   <p className="text-sm text-muted-foreground line-clamp-3">
-                     {post.snippet}
+                    {post.snippet}
                   </p>
                 </CardContent>
                 <CardContent className="pt-2 pb-5">
-                   <Button asChild variant="link" className="p-0 text-primary hover:text-primary/80 font-semibold group">
+                  <Button asChild variant="link" className="p-0 font-semibold text-primary hover:text-primary/80 group">
                     {post.externalLink ? (
                       <a href={post.externalLink} target="_blank" rel="noopener noreferrer">
                         Read More <ArrowRight className="w-4 h-4 ml-1.5 transform transition-transform group-hover:translate-x-1" />
@@ -115,10 +115,10 @@ const BlogSection = ({ blogPosts = defaultBlogPosts }) => {
             </motion.div>
           ))}
         </div>
-         <div className="text-center mt-12">
-          <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 hover:text-primary font-semibold group">
-            <Link to="/blog">
-                View All Posts <Edit3 className="w-4 h-4 ml-2 transform transition-transform group-hover:rotate-[15deg]" />
+        <div className="mt-12 text-center">
+          <Button asChild size="lg" variant="outline" className="font-semibold border-primary text-primary hover:bg-primary/10 hover:text-primary group">
+            <Link to="https://linkedin-smartleads.com/blog" target='_blank'>
+              View All Posts <Edit3 className="w-4 h-4 ml-2 transform transition-transform group-hover:rotate-[15deg]" />
             </Link>
           </Button>
         </div>

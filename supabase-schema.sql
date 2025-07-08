@@ -123,5 +123,5 @@ CREATE TRIGGER on_auth_user_created
   AFTER INSERT ON auth.users
   FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 
--- After creating a new user from authentication, update the role to builder-admin
-update profiles set role = 'builder-admin' where id = '8abeabf3-d4b5-4c82-b1aa-8607ef60dcac';
+-- -- After creating a new user from authentication, update the role to builder-admin
+-- update profiles set role = 'builder-admin' where id = '8abeabf3-d4b5-4c82-b1aa-8607ef60dcac';

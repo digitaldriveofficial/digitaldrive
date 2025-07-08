@@ -5,7 +5,7 @@ import PagePreview from "@/components/PagePreview";
 import { toast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import { pagesService, tilesService } from "@/lib/pagesService";
-import Loading from "./components/Loading";
+import Loading from "../components/Loading";
 import { Helmet } from "react-helmet";
 import Layout from "@/components/Layout";
 

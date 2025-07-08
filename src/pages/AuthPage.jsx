@@ -38,7 +38,7 @@ const AuthPage = () => {
         body: {
           email: userEmail,
           formType: `New Smart Leads User Signup (${method})`,
-          toEmail: 'hello@digitaldrive.pk',
+          toEmail: 'subhanallauddin@gmail.com',
           ccEmail: 'digitaldriveofficial@gmail.com'
         },
       });
@@ -74,7 +74,7 @@ const AuthPage = () => {
         await sendSignupNotification(email, "Email");
 
         if (data.user && data.user.identities && data.user.identities.length === 0) {
-           toast({
+          toast({
             title: "Signup successful! User already exists.",
             description: "Please log in with your existing account.",
             variant: "default",
@@ -146,9 +146,9 @@ const AuthPage = () => {
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-brand-steel-gray via-white to-brand-light-blue/30 p-4">
+    <div className="flex flex-col justify-center items-center p-4 min-h-screen bg-gradient-to-br via-white from-brand-steel-gray to-brand-light-blue/30">
       <Link to="/" className="mb-8">
-        <img src={SMART_LEADS_LOGO_URL} alt="Smart Leads Logo" className="w-24 h-24 mx-auto rounded-lg shadow-lg border-2 border-brand-electric-indigo/30" />
+        <img src={SMART_LEADS_LOGO_URL} alt="Smart Leads Logo" className="mx-auto w-24 h-24 rounded-lg border-2 shadow-lg border-brand-electric-indigo/30" />
       </Link>
       <AnimatePresence mode="wait">
         <motion.div
@@ -172,7 +172,7 @@ const AuthPage = () => {
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-brand-charcoal">Email Address</Label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 w-5 h-5 transform -translate-y-1/2 text-muted-foreground" />
                     <Input
                       id="email"
                       type="email"
@@ -199,18 +199,18 @@ const AuthPage = () => {
                     <button
                       type="button"
                       onClick={togglePasswordVisibility}
-                      className="absolute inset-y-0 right-0 px-3 flex items-center text-muted-foreground hover:text-brand-electric-indigo"
+                      className="flex absolute inset-y-0 right-0 items-center px-3 text-muted-foreground hover:text-brand-electric-indigo"
                       aria-label={showPassword ? "Hide password" : "Show password"}
                     >
-                      {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                      {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                     </button>
                   </div>
                 </div>
                 {mode === 'signup' && (
                   <div className="space-y-2">
                     <Label htmlFor="confirmPassword" className="text-brand-charcoal">Confirm Password</Label>
-                     <div className="relative">
-                        <Input
+                    <div className="relative">
+                      <Input
                         id="confirmPassword"
                         type={showConfirmPassword ? 'text' : 'password'}
                         placeholder="••••••••"
@@ -218,42 +218,42 @@ const AuthPage = () => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                         className="pr-10 border-brand-charcoal/30 focus:border-brand-electric-indigo"
-                        />
-                        <button
+                      />
+                      <button
                         type="button"
                         onClick={toggleConfirmPasswordVisibility}
-                        className="absolute inset-y-0 right-0 px-3 flex items-center text-muted-foreground hover:text-brand-electric-indigo"
+                        className="flex absolute inset-y-0 right-0 items-center px-3 text-muted-foreground hover:text-brand-electric-indigo"
                         aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
-                        >
-                        {showConfirmPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                        </button>
+                      >
+                        {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                      </button>
                     </div>
                   </div>
                 )}
-                <Button type="submit" className="w-full bg-brand-electric-indigo hover:bg-opacity-90 text-white font-semibold py-3 text-lg group" disabled={isLoading || isLinkedInLoading}>
+                <Button type="submit" className="py-3 w-full text-lg font-semibold text-white bg-brand-electric-indigo hover:bg-opacity-90 group" disabled={isLoading || isLinkedInLoading}>
                   {isLoading ? (
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"
+                      className="mr-2 w-5 h-5 rounded-full border-2 border-white border-t-transparent"
                     />
-                  ) : (mode === 'login' ? <LogIn className="w-5 h-5 mr-2" /> : <UserPlus className="w-5 h-5 mr-2" />)}
+                  ) : (mode === 'login' ? <LogIn className="mr-2 w-5 h-5" /> : <UserPlus className="mr-2 w-5 h-5" />)}
                   {isLoading ? 'Processing...' : (mode === 'login' ? 'Log In' : 'Sign Up with Email')}
                 </Button>
               </form>
-              
+
               <div className="relative my-6">
-                <div className="absolute inset-0 flex items-center">
+                <div className="flex absolute inset-0 items-center">
                   <span className="w-full border-t border-brand-charcoal/30" />
                 </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">Or continue with</span>
+                <div className="flex relative justify-center text-xs uppercase">
+                  <span className="px-2 bg-card text-muted-foreground">Or continue with</span>
                 </div>
               </div>
 
-              <Button 
-                variant="outline" 
-                className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 font-semibold py-3 text-lg group" 
+              <Button
+                variant="outline"
+                className="py-3 w-full text-lg font-semibold text-blue-600 border-blue-600 hover:bg-blue-50 hover:text-blue-700 group"
                 onClick={handleLinkedInAuth}
                 disabled={isLoading || isLinkedInLoading}
               >
@@ -261,37 +261,37 @@ const AuthPage = () => {
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full mr-2"
+                    className="mr-2 w-5 h-5 rounded-full border-2 border-blue-600 border-t-transparent"
                   />
                 ) : (
-                  <Linkedin className="w-5 h-5 mr-2" />
+                  <Linkedin className="mr-2 w-5 h-5" />
                 )}
                 {isLinkedInLoading ? 'Redirecting...' : (mode === 'login' ? 'Sign In with LinkedIn' : 'Sign Up with LinkedIn')}
               </Button>
 
             </CardContent>
-            <CardFooter className="flex flex-col items-center space-y-3 pt-6">
+            <CardFooter className="flex flex-col items-center pt-6 space-y-3">
               <p className="text-sm text-muted-foreground">
                 {mode === 'login' ? "Don't have an account?" : 'Already have an account?'}
                 <Button
                   variant="link"
-                  className="text-brand-electric-indigo hover:underline pl-1"
+                  className="pl-1 text-brand-electric-indigo hover:underline"
                   onClick={() => setMode(mode === 'login' ? 'signup' : 'login')}
                   disabled={isLoading || isLinkedInLoading}
                 >
                   {mode === 'login' ? 'Sign Up' : 'Log In'}
                 </Button>
               </p>
-               {mode === 'login' && (
-                 <Button variant="link" size="sm" className="text-muted-foreground hover:text-brand-electric-indigo text-xs" disabled={isLoading || isLinkedInLoading}>
-                    Forgot password?
-                 </Button>
-               )}
+              {mode === 'login' && (
+                <Button variant="link" size="sm" className="text-xs text-muted-foreground hover:text-brand-electric-indigo" disabled={isLoading || isLinkedInLoading}>
+                  Forgot password?
+                </Button>
+              )}
             </CardFooter>
           </Card>
         </motion.div>
       </AnimatePresence>
-       <p className="text-xs text-muted-foreground text-center mt-8 max-w-md">
+      <p className="mt-8 max-w-md text-xs text-center text-muted-foreground">
         By signing up or logging in, you agree to our <Link to="/privacy-policy" className="underline hover:text-brand-electric-indigo">Privacy Policy</Link> and Terms of Service (link to be added).
       </p>
     </div>
