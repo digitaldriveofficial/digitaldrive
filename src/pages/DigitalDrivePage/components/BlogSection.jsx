@@ -117,7 +117,7 @@ const BlogSection = ({ blogPosts = defaultBlogPosts }) => {
         </div>
         <div className="mt-12 text-center">
           <Button asChild size="lg" variant="outline" className="font-semibold border-primary text-primary hover:bg-primary/10 hover:text-primary group">
-            <Link to="https://linkedin-smartleads.com/blog" target='_blank'>
+            <Link to="/blog">
               View All Posts <Edit3 className="w-4 h-4 ml-2 transform transition-transform group-hover:rotate-[15deg]" />
             </Link>
           </Button>

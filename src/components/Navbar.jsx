@@ -55,15 +55,16 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
     navigate(path);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-        if (event.target.closest && event.target.closest('.mobile-menu-button')) {
-          return;
-        }
-        setIsMobileMenuOpen(false);
+  const handleClickOutside = (event) => {
+    if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+      if (event.target.closest && event.target.closest('.mobile-menu-button')) {
+        return;
       }
-    };
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
 
     if (isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -97,7 +98,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                 Blog
               </Button>
               <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
-                <Link to="/product">Product</Link>
+                <Link to="/page/2ec32a62-52df-4a7c-a33b-2f436ee6a042">Product</Link>
               </Button>
               <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
                 <Link to="/team">Team</Link>
@@ -158,13 +159,17 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                 Blog
               </button>
 
-              <button className={mobileNavLinkClasses}>
-                Product
-              </button>
+              <Link to="/page/2ec32a62-52df-4a7c-a33b-2f436ee6a042">
+                <button className={mobileNavLinkClasses} onClick={handleLinkClick}>
+                  Product
+                </button>
+              </Link>
 
-              <button className={mobileNavLinkClasses}>
-                Team
-              </button>
+              <Link to="/team">
+                <button className={mobileNavLinkClasses} onClick={handleLinkClick} >
+                  Team
+                </button>
+              </Link>
 
               {/* <button onClick={scrollToContactForm} className={mobileNavLinkClasses}>
                 <ListPlus className="inline-block mr-3 w-5 h-5 text-brand-sky-blue" />Join Waiting List
