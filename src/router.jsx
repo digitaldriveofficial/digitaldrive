@@ -1,6 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 import Admin from './apps/Admin';
 import PublicPage from './components/PublicPage';
+import Products from './pages/Products.jsx';
+import Blogs from './pages/Blogs.jsx';
 import Login from './components/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
@@ -15,6 +17,7 @@ import Footer from './components/Footer.jsx';
 import ScrollToTop from './components/ScrollToTop.jsx';
 import { supabase } from './lib/supabaseClient.js';
 import { useToast } from './components/ui/use-toast';
+import Team from './pages/Team.jsx';
 
 
 
@@ -38,11 +41,14 @@ export default function Router() {
             <Routes>
                 {/* Public routes - no AuthContext */}
                 <Route path="/page/:pageId" element={<PublicPage />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/team/" element={<Team />} />
+                <Route path="/blogs" element={<Blogs />} />
 
                 {/* Authenticated routes - with AuthContext */}
                 {/* <Route path="/" element={<DigitalDrivePage />} /> */}
                 <Route path="/*" element={<AuthenticatedRoutes />} />
-                <Route path="/blog" element={<BlogListPage />} />
+                {/* <Route path="/blog" element={<BlogListPage />} /> */}
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
                 {/* <Route path="/admin/blog" element={<AuthRedirect><AdminBlogPage /></AuthRedirect>} /> */}
                 <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
