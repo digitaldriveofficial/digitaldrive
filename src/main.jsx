@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Helmet>
-      <title>Digital Drive - Dynamic Pages</title>
+      <title>Digital Drive</title>
       <meta name="description" content="Professional admin panel and viewer for product, blog, and talent pages. Built for Digital Drive." />
     </Helmet>
     <BrowserRouter>

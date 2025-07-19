@@ -94,16 +94,16 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
           <div className="hidden justify-between items-center w-full md:flex">
             {/* Centered Nav Links */}
             <div className="flex flex-1 justify-center space-x-6">
-              <Button variant="ghost" size="sm" className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
-                <Link to="/blogs">
-                Blog
-                </Link>
-              </Button>
               <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
                 <Link to="/products">Products</Link>
               </Button>
               <Button variant="ghost" size="sm" asChild className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
                 <Link to="/team">Team</Link>
+              </Button>
+              <Button variant="ghost" size="sm" className="transition-colors duration-200 text-brand-charcoal hover:bg-brand-electric-indigo/10 hover:text-brand-electric-indigo">
+                <Link to="/blogs">
+                Blog
+                </Link>
               </Button>
             </div>
             {/* Right Side (auth/user, dropdown, etc.) */}
@@ -157,11 +157,6 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
             className="absolute right-0 left-0 top-20 z-40 bg-white border-t shadow-xl md:hidden border-brand-electric-indigo/20"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link to="/blogs">
-              <button className={mobileNavLinkClasses}  onClick={handleLinkClick}>
-                Blog
-              </button>
-              </Link>
 
               <Link to="/products">
                 <button className={mobileNavLinkClasses} onClick={handleLinkClick}>
@@ -172,6 +167,12 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
               <Link to="/team">
                 <button className={mobileNavLinkClasses} onClick={handleLinkClick} >
                   Team
+                </button>
+              </Link>
+              
+              <Link to="/blogs">
+                <button className={mobileNavLinkClasses}  onClick={handleLinkClick}>
+                  Blog
                 </button>
               </Link>
 
